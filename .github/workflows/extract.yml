@@ -1,0 +1,22 @@
+name: Extract source
+on:
+  push:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract and commit
+        run: |
+          if [ ! -f quatrea-source.zip ]; then echo "no zip yet"; exit 0; fi
+          unzip -o quatrea-source.zip
+          shopt -s dotglob nullglob
+          cp -a quatrea/. .
+          rm -rf quatrea quatrea-source.zip .github
+          git config user.name "faizzkun"
+          git config user.email "faizzkun@users.noreply.github.com"
+          git add -A
+          git commit -m "Add QUATREA source" || exit 0
+          git push
