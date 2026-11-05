@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background-color: #f7f3ec;
+}
+
+body {
+  font-family: 'Manrope', system-ui, sans-serif;
+  color: #141210;
+}
+
+::selection {
+  background: #b9975b;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #b9975b;
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
